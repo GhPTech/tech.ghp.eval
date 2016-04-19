@@ -658,7 +658,7 @@ In order share the development, the project can be pushed to the *GitHub*.
 
 On the GitHub home page [GitHub](https://github.com/GhPTech), a new repository has to be created. Name this repository 'com.acme.prime', add a short description 'An example workspace fro the osgi.enroute base tutorial' and set the repository as 'Public' (do not set initialise the 'README' file, do no add 'gitnore' and license).
 
-[!GitHub Repository](http://enroute.osgi.org/img/tutorial_base/ci-github-1.png "Create a New Repository dialog")
+![GitHub Repository](http://enroute.osgi.org/img/tutorial_base/ci-github-1.png "Create a New Repository dialog")
 
 
 In order to connect to the local repository *!/git/com.acme.prime.eval*, the 'SSH URI' *git@github.com:GhPTech/com.acme.prime.git* needs to be copied, then on the command line the following commands should be launched:
@@ -679,7 +679,7 @@ For further commits and pushes the following commands are used:
 
 The *bnd workspace* is setup to be built continuously with *Travis CI*. 
 
-From the *Travis CI* website [!https://travis-ci.org](https://travis-ci.org "Travis CI website") *create an account* based on GitHub credentials (or *login*). 
+From the *Travis CI* website [https://travis-ci.org](https://travis-ci.org "Travis CI website") *create an account* based on GitHub credentials (or *login*). 
 
 Once logged in, select the *Repositories* tab. The *Sync Now* button should be pushed in order to update the latests changes from *GitHub*. Find the 'com.acme.prime' repository and push the *ON* button. Every push will now be automatically build the repository 'com.acme.prime' on the *Travis IC* server. 
 
