@@ -1,7 +1,7 @@
 <h1><img src="http://enroute.osgi.org/img/enroute-logo-64.png" witdh=40px style="float:left;margin: 0 1em 1em 0;width:40px">
 OSGi enRoute Archetype</h1>
 
-This repository represents a template workspace for bndtools, it is the easiest way to get started with OSGi enRoute. The workspace is useful in an IDE (bndtools or Intellij) and has support for [continuous integration][2] with [gradle][3]. If you want to get started with enRoute, then follow the steps in the [quick-start guide][1].
+This repository represents a template workspace for bndtools, it is the easiest way to get started with OSGi enRoute. The workspace is useful in an IDE (bndtools or Intellij) and has support for [continuous integration][2] with [gradle][3]. 
 
 ##Base Tutorial
 
@@ -533,11 +533,11 @@ If the tests are run from *Eclipse JUnit* framework, the *bnd* sets up a new fra
 
 The provider bundle can be used as a *deployable* application. 
 
-From the main menu select *New/Bndtools OSGi Project*, the *OSGi enRoute* template and name the project 'tech.ghp.eval.application'. 
+From the main menu select *New/Bndtools OSGi Project*, the *OSGi enRoute* template and name the project 'tech.ghp.iot.application'. 
 
 An '.application' project should contain limited amounts of code concerning the requirement that drives the final application.
 
-By default, an application only contains a *Gogo shell command* (in this example *EvalApplication* class). In the *EvalImpl* class, the existing API call *eval*, was made available as a *Gogo shell command*. In the present *application* project, the service and the call to the method of the service need to be obtained.
+By default, an application only contains a *Gogo shell command* (in this example *IotApplication* class). In the *EvalImpl* class, the existing API call *eval*, was made available as a *Gogo shell command*. In the present *application* project, the service and the call to the method of the service need to be obtained.
 
 Getting a service is facilitated by *DS*; the *@Reference* annotation and a settler method and need to be added as follows:
 
