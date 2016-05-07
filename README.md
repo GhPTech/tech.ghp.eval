@@ -483,13 +483,13 @@ Assertion of service existence is also needed:
 
     Assert.assertNotNull(getService(Eval.class));
 
-As the *Eval* class is recognised by the current project, the 'com.prime.acme.eval.api' project needs to be included on the *BuildPath* of the 'bnd.bnd' file ('eval.prime.acme.eval.test' project). 
-Also *import* of the 'Eval' and the 'ServiceTracker' classes need to be done into the source code 'EvalTest' file.
+As the *Eval* class is recognised by the current project, the *tech.ghp.eval.api* project needs to be included on the *BuildPath* of the *bnd.bnd* file (*tech.ghp.eval.test* project). 
+Also *import* of the *Eval* and the *ServiceTracker* classes need to be done into the source code *EvalTest* file.
 
     import org.osgi.util.tracker.ServiceTracker;
-    import tech.ghp.engineering.api.Eval;
+    import tech.ghp.eval.api.Eval;
 
-Finally, the dependencies need to be *resolved* from the *Run* tab of the 'bnd.bnd' file. As a result the following bundles will be added into the *Run Bundles* list:
+Finally, the dependencies need to be *resolved* from the *Run* tab of the *bnd.bnd* file. As a result the following bundles will be added into the *Run Bundles* list:
 
     -runbundles: \
 		tech.ghp.eval.provider;version=snapshot,\
@@ -535,7 +535,7 @@ The provider bundle can be used as a *deployable* application.
 
 From the main menu select *New/Bndtools OSGi Project*, the *OSGi enRoute* template and name the project 'tech.ghp.iot.application'. 
 
-An '.application' project should contain limited amounts of code concerning the requirement that drives the final application.
+An *.application* project should contain limited amounts of code concerning the requirement that drives the final application.
 
 By default, an application only contains a *Gogo shell command* (in this example *IotApplication* class). In the *EvalImpl* class, the existing API call *eval*, was made available as a *Gogo shell command*. In the present *application* project, the service and the call to the method of the service need to be obtained.
 
@@ -572,7 +572,7 @@ As with the provider project, the dependency on the API project has to added on 
 
 The *Eval* type from the API project should aslo be included as 
 
-    import tech.ghp.engineering.api.Eval;
+    import tech.ghp.eval.api.Eval;
 
 ###Defining the Application
 
@@ -580,9 +580,9 @@ The runtime requirements are defined in a special file created in the applicatio
 
 *tech.ghp.eval.bndrun* 
 
-This file contains information concerning the *Run Requirements*. By default the *Run Requirements* list containts the 'com.acme.prime.eval.application' bundle. For interaction with the 'Engineering' service, the bundle 'org.apache.felix.gogo.shell' bundle should be added from the *Repositories* list to the *Run Requirements* list and the *Resolve* button should be pushed to identify and assemble the *Run Bundles*. 
+This file contains information concerning the *Run Requirements*. By default the *Run Requirements* list containts the 'com.acme.prime.eval.application' bundle. For interaction with the *Eval* service, the bundle *org.apache.felix.gogo.shell* bundle should be added from the *Repositories* list to the *Run Requirements* list and the *Resolve* button should be pushed to identify and assemble the *Run Bundles*. 
 
-To check if the application runs from the *Run* tab of the 'com.acme.prime.eval.bndrun' file push the *Debug OSGi* button. This will launch the framework and run the application.
+To check if the application runs from the *Run* tab of the *tech.ghp.eval.bndrun* file push the *Debug OSGi* button. This will launch the framework and run the application.
 
 On the shell command try the following a simple (sum, subtraction, multiplication, division) evaluation:
 
@@ -590,15 +590,15 @@ On the shell command try the following a simple (sum, subtraction, multiplicatio
 
 ###Debugging
 
-A debugging friendly framework can also be used. The *application* project also contains the file 'debug.bndrun' file. This file includes the 'tech.ghp.eval.bndrun' file and it adds debug requirements. 
+A debugging friendly framework can also be used. The *application* project also contains the file *debug.bndrun* file. This file includes the *tech.ghp.eval.bndrun* file and it adds debug requirements. 
 
-To try this *Degugging* mode of running the application, open the file 'debug.bndrun' file, resolve the dependencies by pushing the *Resolve* button, then push the *Debug OSGi* button from the upper right side of the Eclipse console.  This will launch the application and display on the shell supplementary information about the runtime. This is triggered by the *-runtrace* flag. This can be set to *false* or removed, if this information is not required.
+To try this *Degugging* mode of running the application, open the file *debug.bndrun* file, resolve the dependencies by pushing the *Resolve* button, then push the *Debug OSGi* button from the upper right side of the Eclipse console.  This will launch the application and display on the shell supplementary information about the runtime. This is triggered by the *-runtrace* flag. This can be set to *false* or removed, if this information is not required.
 
 A set debugging tools such as *Web console*, *Gogo shell*, *XRay*, etc. are available. The running system can be inspected on a browser at the address:
 
 *http://localhost:8080/system/console/xray*
 
-The principle 'Don't Repeat Yourself (DRY)' is applied. The file 'debug.bndrun' inherits from file 'tech.ghp.engineering.bndrun', i.e. information already available in the later file is aslo available in the former file.
+The principle 'Don't Repeat Yourself (DRY)' is applied. The file *debug.bndrun* inherits from file *tech.ghp.eval.bndrun*, i.e. information already available in the later file is aslo available in the former file.
 
 ###Executable
 
@@ -621,11 +621,11 @@ and launch the application with the command
 
 From the command line of the Apache Felix Gogo shell the 'Eval' service can be used with the commands
 
-    eng:eng 8*6
+    eval:eval 8*6
        
 ##Integration
 
-The current application 'tech.ghp.eval' is build by Eclipse IDE. This is useful for local usage and development, however the philosophy of *open source* and *collaborative development* should be considered. Moreover, when application building is carried out on the personal system, many dependencies accumulate. These dependencies are not suitable for *collaborative development* and *open source*. Automatic building from the command line should also be carried out.
+The current application *tech.ghp.eval* is build by Eclipse IDE. This is useful for local usage and development, however the philosophy of *open source* and *collaborative development* should be considered. Moreover, when application building is carried out on the personal system, many dependencies accumulate. These dependencies are not suitable for *collaborative development* and *open source*. Automatic building from the command line should also be carried out.
 
 ###Automatic building
 
@@ -648,20 +648,20 @@ To automatically builds the application 'tech.ghp.eval' from the command line, t
 
     $./gradlew export.tech.ghp.eval
     
-This will create and store the JAR 'tech.ghp.eval.jar' on the path 
-*tech.ghp.engineering.api/generated/distributions/executable/*
-*tech.ghp.engineering.api/generated/*
+This will create and store the JAR *tech.ghp.eval.jar* on the path 
+*tech.ghp.eval.api/generated/distributions/executable/*
+*tech.ghp.eval.api/generated/*
 
 ###Sharing
 
 In order share the development, the project can be pushed to the *GitHub*. 
 
-On the GitHub home page [GitHub](https://github.com/GhPTech), a new repository has to be created. Name this repository 'com.acme.prime', add a short description 'An example workspace fro the osgi.enroute base tutorial' and set the repository as 'Public' (do not set initialise the 'README' file, do no add 'gitnore' and license).
+On the GitHub home page [GitHub](https://github.com/GhPTech), a new repository has to be created. Name this repository *tech.ghp.eval*, add a short description 'An example workspace fro the osgi.enroute base tutorial' and set the repository as 'Public' (do not set initialise the 'README' file, do no add 'gitnore' and license).
 
 ![GitHub Repository](http://enroute.osgi.org/img/tutorial_base/ci-github-1.png "Create a New Repository dialog")
 
 
-In order to connect to the local repository *!/git/com.acme.prime.eval*, the 'SSH URI' *git@github.com:GhPTech/com.acme.prime.git* needs to be copied, then on the command line the following commands should be launched:
+In order to connect to the local repository *!/git/com.acme.prime.eval*, the 'SSH URI' *git@github.com:GhPTech/tech.ghp.eval.git* needs to be copied, then on the command line the following commands should be launched:
 
     $ cd ~/git/tech.ghp.eval
 	$ git add .
@@ -683,14 +683,14 @@ From the *Travis CI* website [https://travis-ci.org](https://travis-ci.org "Trav
 
 Once logged in, select the *Repositories* tab. The *Sync Now* button should be pushed in order to update the latests changes from *GitHub*. Find the 'com.acme.prime' repository and push the *ON* button. Every push will now be automatically build the repository 'com.acme.prime' on the *Travis IC* server. 
 
-In order to trigger the build on *Travis IC* server, a change in the 'com.acme.prime' repository is made. The warning from the 'bnd.bnd' file of the provider project is commented as follows:
+In order to trigger the build on *Travis IC* server, a change in the *tech.ghp.eval* repository is made. The warning from the 'bnd.bnd' file of the provider project is commented as follows:
 
     Bundle-Version:					1.0.0.${tstamp}
     Bundle-Description: 				\
 			A bundle with a provider. Notice that this provider exports the API package. \
 			It also provides a JUnit test and it can be run standalone. \
 			\
-			#${warning;Please update this Bundle-Description in tech.ghp.engineering.provider/bnd.bnd}
+			#${warning;Please update this Bundle-Description in tech.ghp.eval.provider/bnd.bnd}
 
 The change is *saved* and *pushed* to the *GitHub* server. The *Travis IC* notices the difference and launches a new automatic build of the repository.
 
